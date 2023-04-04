@@ -65,9 +65,9 @@ public class MainActivity extends DrawerBaseActivity {
 
                     case R.id.Vehicles:
 
-                        startActivity(new Intent(MainActivity.this, userLocation.class));
+//                        startActivity(new Intent(MainActivity.this, userLocation.class));
 
-//                        getSupportFragmentManager().beginTransaction().replace(R.id.FrameLayout, vehiclesFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.FrameLayout, vehiclesFragment).commit();
 
                         return true;
 

@@ -217,7 +217,7 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
         MarkerOptions markerOptions = new MarkerOptions().position(latLng)
                 .title("I am Here");
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,5));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
         googleMap.addMarker(markerOptions);
 
     }

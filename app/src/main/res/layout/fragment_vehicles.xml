@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="45dp"
     tools:context=".fragments.Vehicles">
 
     <androidx.drawerlayout.widget.DrawerLayout
@@ -16,21 +17,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/secondary"
-                android:layout_marginStart="12dp"
-                android:layout_marginVertical="12dp"
                 android:orientation="vertical"
                 android:backgroundTint="@color/secondary">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:backgroundTint="@color/black"
                     android:orientation="vertical">
                     <TextView
                         android:id="@+id/modelDescriptionIDFrag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
                         android:layout_marginBottom="5dp"
                         android:fontFamily="monospace"
                         android:text="model Description"
@@ -41,6 +40,7 @@
                     <TextView
                         android:id="@+id/plateNumberIDFrag"
                         android:layout_width="wrap_content"
+                        android:layout_marginStart="15dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
                         android:fontFamily="monospace"
@@ -54,6 +54,7 @@
                         android:id="@+id/ImageID"
                         android:layout_width="300dp"
                         android:layout_height="150dp"
+                        android:layout_marginStart="15dp"
                         android:layout_marginBottom="5dp"
                         android:fontFamily="monospace"
                         android:paddingStart="12dp"
@@ -67,14 +68,23 @@
                         android:layout_width="90dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
+                        android:layout_marginStart="15dp"
                         android:fontFamily="monospace"
                         android:text="Location"
                         android:textColor="@color/primary"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         tools:ignore="RtlSymmetry" />
+
+                    <fragment
+                        android:id="@+id/google_map"
+                        android:layout_width="match_parent"
+                        android:layout_height="500dp"
+                        android:name="com.google.android.gms.maps.SupportMapFragment" />
+
                     <TextView
                         android:layout_width="90dp"
+                        android:layout_marginStart="15dp"
                         android:id="@+id/tv1"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
@@ -86,6 +96,7 @@
                         tools:ignore="RtlSymmetry" />
                     <TextView
                         android:layout_width="90dp"
+                        android:layout_marginStart="15dp"
                         android:id="@+id/tv2"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
@@ -97,6 +108,7 @@
                         tools:ignore="RtlSymmetry" />
                     <TextView
                         android:layout_width="90dp"
+                        android:layout_marginStart="15dp"
                         android:id="@+id/tv3"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
@@ -108,6 +120,7 @@
                         tools:ignore="RtlSymmetry" />
                     <TextView
                         android:layout_width="90dp"
+                        android:layout_marginStart="15dp"
                         android:id="@+id/tv4"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
@@ -119,6 +132,7 @@
                         tools:ignore="RtlSymmetry" />
                     <TextView
                         android:layout_width="90dp"
+                        android:layout_marginStart="15dp"
                         android:id="@+id/tv5"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
@@ -128,35 +142,15 @@
                         android:textSize="18sp"
                         android:textStyle="bold"
                         tools:ignore="RtlSymmetry" />
-                    <fragment
-                        android:id="@+id/google_map"
-                        android:layout_width="match_parent"
-                        android:layout_height="500dp"
-                        android:name="com.google.android.gms.maps.SupportMapFragment" />
-
-
-
-                    <ImageView
-                        android:id="@+id/LocationID"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginEnd="25dp"
-                        android:layout_marginBottom="5dp"
-                        android:fontFamily="monospace"
-                        android:text="vehicle status"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        tools:ignore="RtlSymmetry" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:layout_width="200dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginBottom="15dp"
                         android:layout_height="35dp"
                         android:id="@+id/AssignedvehicleBtn"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginVertical="12dp"
-                        android:layout_marginBottom="5dp"
                         android:background="@drawable/edit_text_border"
                         android:gravity="center"
                         android:text="Return Vehicle"
