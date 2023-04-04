@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText">
+
+    <item
+        android:id="@+id/Profile"
+        android:title="Profile"
+        android:icon="@drawable/profile" />
+
+    <item
+        android:id="@+id/info"
+        android:title="More Information"
+        android:icon="@drawable/info"/>
+
+    <item
+        android:id="@+id/FAQ"
+        android:title="FAQ"
+        android:icon="@drawable/faq"/>
+
+    <item
+        android:id="@+id/nav_settings"
+        android:title="About Us"
+        android:icon="@drawable/profile_icon"/>
+
+
+
+
+</menu>

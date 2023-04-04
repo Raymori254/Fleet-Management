@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AdminMainActivity"
+    android:layout_marginBottom="20dp">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/my_drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="85dp"
+                        android:layout_marginBottom="50dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_horizontal"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/Banner"
+                            android:textColor="@color/primary"
+                            android:textSize="45sp">
+
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/slogan"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:fontFamily="sans-serif-black">
+                        </TextView>
+                    </LinearLayout>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="200dp"
+                        android:layout_height="35dp"
+                        android:id="@+id/vehicles_button"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginVertical="12dp"
+                        android:background="@drawable/round_btn"
+                        android:gravity="center"
+                        android:text="Vehicles"
+                        android:textColor="@color/white">
+                    </androidx.appcompat.widget.AppCompatButton>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="200dp"
+                        android:layout_height="35dp"
+                        android:id="@+id/drivers_button"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginVertical="12dp"
+                        android:background="@drawable/round_btn"
+                        android:gravity="center"
+                        android:text="Drivers"
+                        android:textColor="@color/white">
+                    </androidx.appcompat.widget.AppCompatButton>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</LinearLayout>

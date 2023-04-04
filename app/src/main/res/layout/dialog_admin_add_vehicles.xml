@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Vehicle Details"
+        android:background="@color/primary"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        tools:ignore="HardcodedText" />
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Model"
+            android:layout_marginBottom="5dp"
+            android:textSize="15sp"
+            android:layout_marginEnd="15dp"
+            android:textColor="@color/primary"
+            tools:ignore="HardcodedText" />
+        <EditText
+            android:id="@+id/ModelName"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:paddingVertical="2dp"
+            android:paddingHorizontal="15sp"
+            android:background="@drawable/edit_text_border"
+            android:hint="model name"
+            android:textSize="15sp"
+            android:autofillHints="child name"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plate"
+            android:layout_marginBottom="5dp"
+            android:textSize="15sp"
+            android:layout_marginEnd="15dp"
+            android:textColor="@color/primary"
+            tools:ignore="HardcodedText" />
+        <EditText
+            android:id="@+id/plate2"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:paddingVertical="2dp"
+            android:paddingHorizontal="15sp"
+            android:background="@drawable/edit_text_border"
+            android:hint="Plate Number"
+            android:textSize="15sp"
+            android:autofillHints="child name" />
+    </LinearLayout>
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:text="@string/submit"
+            android:id="@+id/usubmit"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+
+
+
+</LinearLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.Home">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/my_drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="85dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginBottom="50dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut dui dictum, euismod sem ac, auctor nibh. Suspendisse potenti. Integer consectetur dignissim egestas. Nunc posuere et diam at aliquam."
+                        android:textColor="@color/black"
+                        android:textSize="14sp">
+                    </TextView>
+                </LinearLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="200dp"
+                    android:layout_height="35dp"
+                    android:id="@+id/AssignedvehicleBtn"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginVertical="12dp"
+                    android:background="@drawable/round_btn"
+                    android:gravity="center"
+                    android:text="select Assigned Vehicle"
+                    android:textColor="@color/white">
+                </androidx.appcompat.widget.AppCompatButton>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="200dp"
+                    android:layout_height="35dp"
+                    android:id="@+id/drivers_button"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginVertical="12dp"
+                    android:background="@drawable/round_btn"
+                    android:gravity="center"
+                    android:text="Do something"
+                    android:textColor="@color/white">
+                </androidx.appcompat.widget.AppCompatButton>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+
+</FrameLayout>

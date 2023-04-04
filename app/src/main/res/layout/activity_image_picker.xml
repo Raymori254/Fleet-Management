@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.ImagePicker">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Upload Image"
+        android:layout_marginTop="5dp"
+        android:background="@color/primary"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/secondary"
+        tools:ignore="HardcodedText">
+    </TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="180dp"
+            android:layout_height="35dp"
+            android:text="Select Image"
+            android:id="@+id/gallery"
+            android:background="@drawable/edit_text_border"
+            android:textColor="@color/primary"
+            android:layout_gravity="center"
+            android:textSize="12sp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="10dp"
+            tools:ignore="HardcodedText" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="180dp"
+            android:layout_height="35dp"
+            android:text="Take Photo"
+            android:id="@+id/camera"
+            android:background="@drawable/edit_text_border"
+            android:textColor="@color/primary"
+            android:layout_gravity="center"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            tools:ignore="HardcodedText" />
+
+
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:paddingVertical="2dp"
+        android:paddingHorizontal="15sp"
+        android:background="@drawable/edit_text_border"
+        android:textSize="15sp"
+        android:autofillHints="child name" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:text="@string/submit"
+        android:id="@+id/picsubmit"
+        android:background="@drawable/round_btn"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:textSize="12sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">FLITRACKA</string>
+    <string name="Banner">FLITRACKA</string>
+    <string name="slogan">Quality Service always on Time</string>
+    <string name="Welcome_message">Welcome to Flitracka</string>
+    <string name="enter_your_email">Enter Your Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="enter_your_full_name">Enter your Full Name</string>
+    <string name="email">Email</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="register_as">Register as:</string>
+    <string name="create_account">Create Account</string>
+    <string name="driver">driver</string>
+    <string name="logout">Logout</string>
+    <string name="submit">Submit</string>
+    <string name="Lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut dui
+        dictum, euismod sem ac, auctor nibh. Suspendisse potenti. Integer consectetur dignissim egestas.
+        Nunc posuere et diam at aliquam. Nam metus risus, dignissim ut feugiat quis, eleifend id mi. Sed
+        lacinia nibh eu sapien malesuada, in scelerisque diam pharetra. Duis ligula diam, iaculis non egestas sed
+        , faucibus id nibh. Curabitur elit lorem, lacinia eget tincidunt at, malesuada in odio. Mauris venenatis
+        efficitur lorem in luctus. Etiam eu laoreet eros, sed scelerisque sapien.</string>
+    <string name="toolbaroptionsbtn">toolbaroptionsbtn</string>
+    <string name="Drawer_open">Drawer Open</string>
+    <string name="Drawer_close">Drawer Close</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="assigned_vehicles">Assigned Vehicles</string>
+    <string name="vehicles_in_garage">Vehicles in Garage</string>
+    <string name="map_key" translatable="false">AIzaSyB_qsP8AOP_P0Md1Pz-48TDaJYjTP3vbjo</string>
+</resources>

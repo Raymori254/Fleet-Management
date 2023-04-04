@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1014588885392",
+    "project_id": "ray-fleets",
+    "storage_bucket": "ray-fleets.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014588885392:android:3beb66292030ed7f8c8b15",
+        "android_client_info": {
+          "package_name": "com.example.ray"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014588885392-gc2disfd9ppl2lc4uohks9881dckoc4h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ray",
+            "certificate_hash": "1e0aa782b4fbc300afceaa9b5cbe1d7ac5ca4da6"
+          }
+        },
+        {
+          "client_id": "1014588885392-updbka1uhn2ifm1qah5h0uupncndhrmm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfZA_AJDvT7BU-zxv-5Z5vL5-fdEIteDk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1014588885392-updbka1uhn2ifm1qah5h0uupncndhrmm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

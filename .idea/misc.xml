@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/add.xml" value="0.2485" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/addd.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/back.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/cell_shape.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/circular.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/delete.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/edit_text_border.xml" value="0.2485" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/faq.xml" value="0.187" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/home.xml" value="0.187" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/info.xml" value="0.187" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/logout.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/message.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/next.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/profile_icon.xml" value="0.187" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/round_btn.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/toolbar_options.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/update.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/drawable-v24/users.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/drawable/eye.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/drawable/ic_add.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/drawable/image.xml" value="0.217" />
+        <entry key="..\:/Ray/app/src/main/res/drawable/round_corner_delete.xml" value="0.2085" />
+        <entry key="..\:/Ray/app/src/main/res/drawable/roundcorner.xml" value="0.2485" />
+        <entry key="..\:/Ray/app/src/main/res/drawable/textview_selector.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_admin_assign_driver_vehicle.xml" value="0.2994791666666667" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_admin_assigned_vehicle_details.xml" value="0.3029891304347826" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_admin_driver_details_page.xml" value="0.18327272091700048" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_admin_drivers.xml" value="0.21818181061547676" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_admin_main.xml" value="0.2879999900124293" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_admin_vehicle_details_page.xml" value="0.4363636212309535" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_admin_vehicles.xml" value="0.4363636212309535" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_assigned_vehicles_list.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_drawer_base.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_forgot_password.xml" value="0.24270833333333333" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_image_picker.xml" value="0.4363636212309535" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_login.xml" value="0.2879999900124293" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_main.xml" value="0.2879999900124293" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_splash_screen.xml" value="0.22864583333333333" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_user_location.xml" value="0.2703804347826087" />
+        <entry key="..\:/Ray/app/src/main/res/layout/admin_vehicles_layout.xml" value="0.2509057971014493" />
+        <entry key="..\:/Ray/app/src/main/res/layout/content_layout.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/layout/dialog_admin_add_drivers.xml" value="0.2984375" />
+        <entry key="..\:/Ray/app/src/main/res/layout/dialog_admin_add_vehicles.xml" value="0.21818181061547676" />
+        <entry key="..\:/Ray/app/src/main/res/layout/fragment_about_u_s.xml" value="0.2694746376811594" />
+        <entry key="..\:/Ray/app/src/main/res/layout/fragment_assigned_vehicles.xml" value="0.28442028985507245" />
+        <entry key="..\:/Ray/app/src/main/res/layout/fragment_f_a_qs.xml" value="0.2694746376811594" />
+        <entry key="..\:/Ray/app/src/main/res/layout/fragment_home.xml" value="0.2694746376811594" />
+        <entry key="..\:/Ray/app/src/main/res/layout/fragment_more_info.xml" value="0.3151041666666667" />
+        <entry key="..\:/Ray/app/src/main/res/layout/fragment_profile.xml" value="0.2694746376811594" />
+        <entry key="..\:/Ray/app/src/main/res/layout/fragment_settings.xml" value="0.2694746376811594" />
+        <entry key="..\:/Ray/app/src/main/res/layout/fragment_vehicles.xml" value="0.2694746376811594" />
+        <entry key="..\:/Ray/app/src/main/res/layout/fragment_vehicles_in_garage.xml" value="0.28442028985507245" />
+        <entry key="..\:/Ray/app/src/main/res/layout/login.xml" value="0.24270833333333333" />
+        <entry key="..\:/Ray/app/src/main/res/layout/menu_item_layout.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/layout/nav_header.xml" value="0.5847272524494778" />
+        <entry key="..\:/Ray/app/src/main/res/layout/recyclerview_assigned_vehicles_admin_layout.xml" value="0.18342391304347827" />
+        <entry key="..\:/Ray/app/src/main/res/layout/recyclerview_drivers_admin_layout.xml" value="0.4363636212309535" />
+        <entry key="..\:/Ray/app/src/main/res/layout/recyclerview_vehicles_admin_layout.xml" value="0.2509057971014493" />
+        <entry key="..\:/Ray/app/src/main/res/layout/registration.xml" value="0.2114695340501792" />
+        <entry key="..\:/Ray/app/src/main/res/layout/toolbar.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/menu/bottom_nav.xml" value="0.3151041666666667" />
+        <entry key="..\:/Ray/app/src/main/res/menu/navigation_menu.xml" value="0.21818181061547676" />
+        <entry key="..\:/Ray/app/src/main/res/menu/toolbar_menu.xml" value="0.2879999900124293" />
+        <entry key="..\:/Ray/app/src/main/res/menu/top_toolbar.xml" value="0.19101123595505617" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
