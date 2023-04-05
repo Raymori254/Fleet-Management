@@ -57,6 +57,10 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
     //Firebase
     DatabaseReference ref;
 
+    //FirebaseDatabase
+    FirebaseDatabase db;
+    DatabaseReference reference;
+
     //Location
     FusedLocationProviderClient fusedLocationProviderClient;
     Location currentLocation;
@@ -219,6 +223,23 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
         googleMap.addMarker(markerOptions);
+
+        //Add location to database
+        db = FirebaseDatabase.getInstance();
+        reference = db.getReference().child("Users")
+                .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                .child("Current Location");
+
+        reference.setValue(latLng).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(getContext(), "Location Saved", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(getContext(), "Location Not Saved", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
     }
 

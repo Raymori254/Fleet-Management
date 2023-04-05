@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.ray.R;
 import com.example.ray.activities.AdminAssignedVehicleDetails;
@@ -102,7 +103,12 @@ public class AssignedVehiclesFragment extends Fragment implements RecyclerViewIn
         intent.putExtra("plateNumber",(vehiclesList.get(position).getPlate()));
         intent.putExtra("VehicleId",(vehiclesList.get(position).getVehicleId()));
         intent.putExtra("driverName",(vehiclesList.get(position).getDriver()));
+        intent.putExtra("driverId",(vehiclesList.get(position).getDriverID()));
         startActivity(intent);
+
+        String drID = vehiclesList.get(position).getDriverID();
+
+        Toast.makeText(getContext(), drID, Toast.LENGTH_SHORT).show();
 
 
     }

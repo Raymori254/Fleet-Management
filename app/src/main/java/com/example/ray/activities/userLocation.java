@@ -50,6 +50,7 @@ public class userLocation extends AppCompatActivity {
     FusedLocationProviderClient client;
     SupportMapFragment supportMapFragment;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +58,8 @@ public class userLocation extends AppCompatActivity {
 
         supportMapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.google_map);
+
+
 
 
         //Location, initializing fusedLocationProviderClient
@@ -103,8 +106,12 @@ public class userLocation extends AppCompatActivity {
                         @Override
                         public void onMapReady(@NonNull GoogleMap googleMap) {
                             //Initialize Latlng
-                            LatLng latlng = new LatLng(location.getLatitude(),
-                                    location.getLongitude());
+                            LatLng latlng = new LatLng
+                                    (location.getLatitude(),
+                                    location.getLongitude()
+                                    );
+                            //Add the current location to database
+
 
                             //Create marker options
                             MarkerOptions options = new MarkerOptions().position(latlng)

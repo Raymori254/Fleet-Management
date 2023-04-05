@@ -99,6 +99,7 @@ public class AdminAssignDriverVehicle extends AppCompatActivity implements Recyc
         reff = db.getReference().child("Vehicles");
 
         String driverName = driversList.get(position).getFullName();
+        String driverId = driversList.get(position).getUserID();
 
         //Getting the details from the previous page
         String vehicleId = "vehicleIdentification";
@@ -135,6 +136,8 @@ public class AdminAssignDriverVehicle extends AppCompatActivity implements Recyc
                             item.put("plate", finalPlateNumber);
                             item.put("vehicleId", finalVehicleId);
                             item.put("driver", driverName);
+                            item.put("driverID", driverId);
+
 
 
                             reff.child("Assigned Vehicles").child(finalVehicleId).setValue(item);

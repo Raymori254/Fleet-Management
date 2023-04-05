@@ -4,7 +4,7 @@ public class vehiclesModel {
 
     //variable declaration
 
-    String model,plate,vehicleId,vehicleImage,driver;
+    String model,plate,vehicleId,vehicleImage,driver,driverID;
 
     //empty constructor
 
@@ -15,12 +15,13 @@ public class vehiclesModel {
 
     //constructor with variable initialization to handle the data model
 
-    public vehiclesModel(String modelDescription, String plateDescription, String vehicleIdentification, String vehicleImag,String driverAssign) {
+    public vehiclesModel(String modelDescription, String plateDescription, String vehicleIdentification, String vehicleImag,String driverAssign, String driverIdentification) {
         this.model = modelDescription;
         this.plate = plateDescription;
         this.vehicleId = vehicleIdentification;
         this.vehicleImage = vehicleImag;
         this.driver = driverAssign;
+        this.driverID= driverIdentification;
     }
 
 
@@ -62,6 +63,14 @@ public class vehiclesModel {
 
     public String getDriver() {
         return driver;
+    }
+
+    public String getDriverID() {
+        return driverID;
+    }
+
+    public void setDriverID(String driverID) {
+        this.driverID = driverID;
     }
 
     public void setDriver(String driver) {
