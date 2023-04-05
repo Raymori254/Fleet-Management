@@ -37,7 +37,7 @@ public class AdminAssignDriverVehicle extends AppCompatActivity implements Recyc
     //initialize variables
 
     FirebaseDatabase db;
-    DatabaseReference ref, reff;
+    DatabaseReference ref, reff, reference;
     RecyclerView recyclerView;
     AdminDriversAdapter adapter;
 
@@ -142,6 +142,27 @@ public class AdminAssignDriverVehicle extends AppCompatActivity implements Recyc
 
                             reff.child("Assigned Vehicles").child(finalVehicleId).setValue(item);
                             reff.child("Vehicles in Garage").child(finalVehicleId).removeValue();
+
+                            db = FirebaseDatabase.getInstance();
+                            reference = db.getReference().child("Users")
+                                    .child(driverId)
+                                    .child("Current Location");
+                            reference.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                    Map<String, Object> item = new HashMap<>();
+                                    item.put("latitude", -1.286389);
+                                    item.put("longitude", 36.817223);
+                                    reference.setValue(item);
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                             Toast.makeText(AdminAssignDriverVehicle.this, "Vehicle Assigned", Toast.LENGTH_SHORT).show();
                             
                             startActivity(new Intent(AdminAssignDriverVehicle.this, AdminVehiclesActivity.class));

@@ -75,6 +75,8 @@ public class AssignedVehiclesFragment extends Fragment implements RecyclerViewIn
                     vehiclesModel vm = dataSnapshot.getValue(vehiclesModel.class);
                     vehiclesList.add(vm);
 
+
+
                     adapter.notifyDataSetChanged();
                     adapter.notifyItemInserted(vehiclesList.size() - 1);
 
@@ -108,7 +110,6 @@ public class AssignedVehiclesFragment extends Fragment implements RecyclerViewIn
 
         String drID = vehiclesList.get(position).getDriverID();
 
-        Toast.makeText(getContext(), drID, Toast.LENGTH_SHORT).show();
 
 
     }
