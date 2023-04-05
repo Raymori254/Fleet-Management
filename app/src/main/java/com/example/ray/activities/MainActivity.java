@@ -42,7 +42,7 @@ public class MainActivity extends DrawerBaseActivity {
         mainActivityBinding =   ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mainActivityBinding.getRoot());
 
-        setTitle("FLEET MANAGEMENT");
+        setTitle("FLITRACKA");
 
         //Bottom Navigation Icons
 
