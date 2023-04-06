@@ -176,7 +176,7 @@
                         android:id="@+id/ReturnVehicleToGarage"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginVertical="12dp"
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginBottom="25dp"
                         android:background="@drawable/edit_text_border"
                         android:gravity="center"
                         android:text="Return Vehicle"

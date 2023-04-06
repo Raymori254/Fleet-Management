@@ -3,6 +3,7 @@ package com.example.ray.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,14 +25,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class AdminAssignedVehicleDetails extends AppCompatActivity {
 
     TextView modelTV, plateTV, driverTV;
     SupportMapFragment supportMapFragment;
-    Button retrieveLocation;
-    DatabaseReference ref;
+    Button retrieveLocation, returnVehicle;
+    DatabaseReference ref, reference, reff, refer;
     FirebaseDatabase db;
 
     @Override
@@ -65,6 +68,8 @@ public class AdminAssignedVehicleDetails extends AppCompatActivity {
 
         }
 
+
+
         modelTV = findViewById(R.id.modelDescriptionID);
         plateTV = findViewById(R.id.plateNumberDescriptionID);
         driverTV = findViewById(R.id.DriverAssignedID);
@@ -78,8 +83,6 @@ public class AdminAssignedVehicleDetails extends AppCompatActivity {
         retrieveLocation = findViewById(R.id.retriveLocation);
         String finalDriverId = DriverId;
         String finalDriver = Driver;
-
-
 
         retrieveLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +130,68 @@ public class AdminAssignedVehicleDetails extends AppCompatActivity {
 
                     }
                 });
+
+
+            }
+        });
+
+
+        //initialize return vehicle button
+        returnVehicle = findViewById(R.id.ReturnVehicleToGarage);
+        String finalVehicleId = vehicleId;
+
+
+
+        String finalModel = model;
+        String finalPlate = plate;
+        String finalVehicleId1 = vehicleId;
+        returnVehicle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                db = FirebaseDatabase.getInstance();
+
+                //remove the assigned vehicle from Assigned vehicle Object
+                reference = db.getReference().child("Vehicles")
+                        .child("Assigned Vehicles").child(finalVehicleId);
+                reference.removeValue();
+                Toast.makeText(AdminAssignedVehicleDetails.this, "Vehicle returned to Garage", Toast.LENGTH_SHORT).show();
+
+
+
+                //Add the removed vehicle to vehicles in garage
+
+                reff =  db.getReference().child("Vehicles")
+                        .child("Vehicles in Garage");
+                reff.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+
+                            Map<String, Object> item = new HashMap<>();
+                            item.put("model", finalModel);
+                            item.put("plate", finalPlate);
+                            item.put("vehicleId", finalVehicleId1);
+
+                            reff.child(finalVehicleId).setValue(item);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+                //remove assigned vehicle from users profile
+                refer = db.getReference().child("Users")
+                        .child(finalDriverId)
+                        .child("Assigned Vehicle");
+                refer.removeValue();
+
+                startActivity(new Intent(AdminAssignedVehicleDetails.this, AdminMainActivity.class));
 
 
             }
