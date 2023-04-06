@@ -12,11 +12,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ray.R;
 import com.example.ray.adapters.AdminVehiclesAdapter;
-import com.example.ray.databinding.ActivityAdminMainBinding;
 import com.example.ray.databinding.ActivityAdminVehicleDetailsPageBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,14 +22,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-import java.util.Map;
 
-public class AdminVehicleDetailsPage extends DrawerbaseActivity2 {
+
+public class AdminVehicleDetailsPage extends DrawerbaseActivity2{
 
     //creating variables
     TextView modelTV, plateTV;
-    ActivityAdminVehicleDetailsPageBinding activityAdminVehicleDetailsPageBinding;
     Button editPhoto, assignDriver, deleteVehicle;
 
     //initialize variables
@@ -40,6 +36,8 @@ public class AdminVehicleDetailsPage extends DrawerbaseActivity2 {
     DatabaseReference ref,refer,reference;
     RecyclerView recyclerView;
     AdminVehiclesAdapter adapter;
+    ActivityAdminVehicleDetailsPageBinding activityAdminVehicleDetailsPageBinding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +46,7 @@ public class AdminVehicleDetailsPage extends DrawerbaseActivity2 {
 
         activityAdminVehicleDetailsPageBinding = ActivityAdminVehicleDetailsPageBinding.inflate(getLayoutInflater());
         setContentView(activityAdminVehicleDetailsPageBinding.getRoot());
+
 
         setTitle("Vehicle Description");
 
@@ -138,9 +137,7 @@ public class AdminVehicleDetailsPage extends DrawerbaseActivity2 {
 
                                    //Remove from list
                                    reference.child(finalVehicleId).removeValue();
-                                   Toast.makeText(AdminVehicleDetailsPage.this, "Vehicle Deleted", Toast.LENGTH_SHORT).show();
                                    startActivity(new Intent(AdminVehicleDetailsPage.this, AdminVehiclesActivity.class));
-                                   recreate();
 
                                }
 

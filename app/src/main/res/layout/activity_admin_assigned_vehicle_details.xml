@@ -3,12 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activities.AdminAssignedVehicleDetails">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/primary"
+        android:text="Assigned Vehicle"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingStart="12dp"
+        android:textColor="@color/secondary"
+        android:textSize="18sp"
+        android:layout_marginBottom="5dp"
+        tools:ignore="HardcodedText,RtlSymmetry"/>
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/my_drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -16,15 +30,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/secondary"
-                android:layout_marginVertical="12dp"
                 android:orientation="vertical"
                 android:backgroundTint="@color/secondary">
+
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="16dp"
                     android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -88,7 +103,6 @@
                         <TextView
                             android:layout_width="145dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp"
                             android:paddingStart="12dp"
                             android:text="Driver Assigned"
                             android:textColor="@color/primary"

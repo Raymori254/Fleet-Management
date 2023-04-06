@@ -185,12 +185,6 @@ public class AssignedVehiclesList extends DrawerBaseActivity implements Recycler
 
                                 Toast.makeText(AssignedVehiclesList.this, "Driver Can only be assigned one Vehicle", Toast.LENGTH_SHORT).show();
 
-
-                            }
-                            else{
-
-
-
                             }
                         }
 

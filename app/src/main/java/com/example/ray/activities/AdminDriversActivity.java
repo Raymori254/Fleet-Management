@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import com.example.ray.R;
 import com.example.ray.adapters.AdminDriversAdapter;
 import com.example.ray.adapters.AdminVehiclesAdapter;
+import com.example.ray.databinding.ActivityAdminDriversBinding;
 import com.example.ray.interfaces.RecyclerViewInterface;
 import com.example.ray.models.driversModel;
 import com.example.ray.models.vehiclesModel;
@@ -28,10 +29,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class AdminDriversActivity extends AppCompatActivity implements RecyclerViewInterface {
+public class AdminDriversActivity extends DrawerbaseActivity2 implements RecyclerViewInterface {
 
     //arraylist
     ArrayList<driversModel> driversList;
+
+    //Drawebase
+    ActivityAdminDriversBinding activityAdminDriversBinding;
 
     //initialize variables
 
@@ -46,6 +50,11 @@ public class AdminDriversActivity extends AppCompatActivity implements RecyclerV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_drivers);
+
+        activityAdminDriversBinding = ActivityAdminDriversBinding.inflate(getLayoutInflater());
+        setContentView(activityAdminDriversBinding.getRoot());
+
+        setTitle("Drivers");
 
         //DB
         db = FirebaseDatabase.getInstance();
