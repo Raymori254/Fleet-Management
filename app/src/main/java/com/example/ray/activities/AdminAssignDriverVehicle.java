@@ -37,7 +37,7 @@ public class AdminAssignDriverVehicle extends AppCompatActivity implements Recyc
     //initialize variables
 
     FirebaseDatabase db;
-    DatabaseReference ref, reff, reference;
+    DatabaseReference ref, reff, reference, refer;
     RecyclerView recyclerView;
     AdminDriversAdapter adapter;
 
@@ -71,10 +71,16 @@ public class AdminAssignDriverVehicle extends AppCompatActivity implements Recyc
                     //if statement to exclude the admin from being displayed as a user driver
                     if (!dataSnapshot.child("Personal Details").child("type").getValue(String.class).equals("admin")) {
                         driversModel vm = dataSnapshot.child("Personal Details").getValue(driversModel.class);
-                        driversList.add(vm);
+                        //if statement to only display drivers with no vehicle assigned
+                        if(!dataSnapshot.child("Assigned Vehicle").exists()){
 
-                        adapter.notifyDataSetChanged();
-                        adapter.notifyItemInserted(driversList.size() - 1);
+                            driversList.add(vm);
+
+                            adapter.notifyDataSetChanged();
+                            adapter.notifyItemInserted(driversList.size() - 1);
+
+                        }
+
                     }
                 }
 
@@ -121,6 +127,7 @@ public class AdminAssignDriverVehicle extends AppCompatActivity implements Recyc
         String finalModelDescription = modelDescription;
         String finalPlateNumber = plateNumber;
         String finalVehicleId = vehicleId;
+        String finalVehicleId1 = vehicleId;
         builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -163,8 +170,32 @@ public class AdminAssignDriverVehicle extends AppCompatActivity implements Recyc
 
                                 }
                             });
+
+
+                            //Add assigned vehicle to user profile
+                            refer = db.getReference().child("Users")
+                                            .child(driverId).child("Assigned Vehicle");
+                            refer.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                    Map<String, Object> item = new HashMap<>();
+                                    item.put("model", finalModelDescription);
+                                    item.put("plate", finalPlateNumber);
+                                    item.put("vehicleId", finalVehicleId);
+
+                                    refer.child(finalVehicleId1).setValue(item);
+
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
                             Toast.makeText(AdminAssignDriverVehicle.this, "Vehicle Assigned", Toast.LENGTH_SHORT).show();
-                            
                             startActivity(new Intent(AdminAssignDriverVehicle.this, AdminVehiclesActivity.class));
 
 
