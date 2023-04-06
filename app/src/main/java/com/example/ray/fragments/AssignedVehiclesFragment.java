@@ -71,11 +71,10 @@ public class AssignedVehiclesFragment extends Fragment implements RecyclerViewIn
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
                     vehiclesModel vm = dataSnapshot.getValue(vehiclesModel.class);
                     vehiclesList.add(vm);
-
-
 
                     adapter.notifyDataSetChanged();
                     adapter.notifyItemInserted(vehiclesList.size() - 1);
