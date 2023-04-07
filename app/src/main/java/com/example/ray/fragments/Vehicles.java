@@ -17,6 +17,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -53,13 +55,14 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
 
     //Variables
     TextView modelTV, plateTV, tv1, tv2, tv3, tv4, tv5;
+    ImageView image;
 
     //Firebase
     DatabaseReference ref;
 
     //FirebaseDatabase
     FirebaseDatabase db;
-    DatabaseReference reference;
+    DatabaseReference reference,imageRef;
 
     //Location
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -82,6 +85,7 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
 
         modelTV = view.findViewById(R.id.modelDescriptionIDFrag);
         plateTV = view.findViewById(R.id.plateNumberIDFrag);
+        image = view.findViewById(R.id.ImageID);
 
         ref = FirebaseDatabase.getInstance().getReference().child("Users")
                 .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
@@ -94,9 +98,30 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
 
                     String modelDescription = (String) dataSnapshot.child("model").getValue();
                     String NumberPlate = (String) dataSnapshot.child("plate").getValue();
+                    String vehicleId = (String) dataSnapshot.child("vehicleId").getValue();
 
                     modelTV.setText(modelDescription);
                     plateTV.setText(NumberPlate);
+
+                    //imageview
+                    db = FirebaseDatabase.getInstance();
+                    imageRef = db.getReference().child("Vehicles Images").child(vehicleId);
+                    imageRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            String vehicleImage = (String) snapshot.child("imageUri").getValue();
+
+                            Picasso.get().load(vehicleImage).into(image);
+
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
 
             }
@@ -106,6 +131,8 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
 
             }
         });
+
+
 
 
         //Location, initializing fusedLocationProviderClient

@@ -8,10 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ray.R;
 import com.example.ray.adapters.AdminVehiclesAdapter;
@@ -21,7 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
+import com.squareup.picasso.Picasso;
 
 
 public class AdminVehicleDetailsPage extends DrawerbaseActivity2{
@@ -29,14 +32,13 @@ public class AdminVehicleDetailsPage extends DrawerbaseActivity2{
     //creating variables
     TextView modelTV, plateTV;
     Button editPhoto, assignDriver, deleteVehicle;
-
-    //initialize variables
-
+    ImageView image;
     FirebaseDatabase db;
-    DatabaseReference ref,refer,reference;
+    DatabaseReference ref,refer,reference,imageRef;
     RecyclerView recyclerView;
     AdminVehiclesAdapter adapter;
     ActivityAdminVehicleDetailsPageBinding activityAdminVehicleDetailsPageBinding;
+
 
 
     @Override
@@ -53,6 +55,7 @@ public class AdminVehicleDetailsPage extends DrawerbaseActivity2{
         //initialize variables
         modelTV = findViewById(R.id.modelDescriptionID);
         plateTV = findViewById(R.id.plateNumberID);
+        image = findViewById(R.id.ImageID);
 
 
         //Getting the details from the previous page
@@ -77,6 +80,8 @@ public class AdminVehicleDetailsPage extends DrawerbaseActivity2{
         plateTV.setText(plate);
 
 
+
+
         //DB
         db = FirebaseDatabase.getInstance();
         refer = db.getReference().child("vehicles").push();
@@ -84,6 +89,25 @@ public class AdminVehicleDetailsPage extends DrawerbaseActivity2{
         assert vehicleID != null;
         ref = db.getReference().child("Vehicles").child(vehicleID);
         reference = db.getReference().child("Vehicles").child("Vehicles in Garage");
+
+        //imageview
+        imageRef = db.getReference().child("Vehicles Images").child(vehicleId);
+        imageRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                String vehicleImage = (String) snapshot.child("imageUri").getValue();
+
+                Picasso.get().load(vehicleImage).into(image);
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         //initialize buttons
         editPhoto = findViewById(R.id.editPhoto);

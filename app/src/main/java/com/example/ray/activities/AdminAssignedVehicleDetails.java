@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,8 +38,9 @@ public class AdminAssignedVehicleDetails extends DrawerbaseActivity2 {
 
     TextView modelTV, plateTV, driverTV;
     SupportMapFragment supportMapFragment;
+    ImageView image;
     Button retrieveLocation, returnVehicle;
-    DatabaseReference ref, reference, reff, refer;
+    DatabaseReference ref, reference, reff, refer, imageRef;
     FirebaseDatabase db;
     ActivityAdminAssignedVehicleDetailsBinding activityAdminAssignedVehicleDetailsBinding;
 
@@ -84,11 +87,32 @@ public class AdminAssignedVehicleDetails extends DrawerbaseActivity2 {
         modelTV = findViewById(R.id.modelDescriptionID);
         plateTV = findViewById(R.id.plateNumberDescriptionID);
         driverTV = findViewById(R.id.DriverAssignedID);
+        image = findViewById(R.id.ImageID);
 
         //setting textview
         modelTV.setText(model);
         plateTV.setText(plate);
         driverTV.setText(Driver);
+
+        //get the image
+        db = FirebaseDatabase.getInstance();
+        imageRef = db.getReference().child("Vehicles Images").child(vehicleId);
+        imageRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                String vehicleImage = (String) snapshot.child("imageUri").getValue();
+
+                Picasso.get().load(vehicleImage).into(image);
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         //initialize retrieve button and set click listener
         retrieveLocation = findViewById(R.id.retriveLocation);

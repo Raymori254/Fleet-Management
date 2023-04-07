@@ -3,37 +3,32 @@ package com.example.ray.activities;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
-import android.content.Context;
+import android.content.ContentResolver;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Base64;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.ray.R;
-import com.example.ray.adapters.AdminVehiclesAdapter;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.example.ray.models.imagesModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 public class ImagePicker extends AppCompatActivity {
 
@@ -41,13 +36,14 @@ public class ImagePicker extends AppCompatActivity {
 
     Button galleryBT, cameraBT, upload;
     ImageView imageView;
-    Uri imageUri;
 
     FirebaseDatabase db;
-    DatabaseReference ref,refer,reference;
+    DatabaseReference ref;
+    FirebaseAuth authProfile;
+    FirebaseUser firebaseUser;
+    StorageReference storageReference;
+    Uri imageUri;
 
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
-    private static final int REQUEST_IMAGE_SELECT = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +60,22 @@ public class ImagePicker extends AppCompatActivity {
         }
 
 
+        imageView = findViewById(R.id.imageView);
+
+//        progressBar.setVisibility(View.INVISIBLE);
+
         //DB
         db = FirebaseDatabase.getInstance();
-        ref = db.getReference().child("VehiclesImages").child(vehicleId);
+        ref = db.getReference().child("Vehicles Images").child(vehicleId);
+        storageReference = FirebaseStorage.getInstance().getReference("Images");
+
+        authProfile = FirebaseAuth.getInstance();
+        firebaseUser = authProfile.getCurrentUser();
+        Uri uri = firebaseUser.getPhotoUrl();
+
+        Picasso.get().load(uri).into(imageView);
+
+
 
         //initialize variables
         galleryBT = findViewById(R.id.gallery);
@@ -76,16 +85,20 @@ public class ImagePicker extends AppCompatActivity {
 
                 selectImage();
 
-
             }
 
             private void selectImage() {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, REQUEST_IMAGE_SELECT);
+
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent,2);
             }
 
 
         });
+
+
 
         cameraBT = findViewById(R.id.camera);
         cameraBT.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +108,7 @@ public class ImagePicker extends AppCompatActivity {
             }
         });
 
-        imageView = findViewById(R.id.imageView);
+
 
         //initialize upload button and set click listener
         upload = findViewById(R.id.picsubmit);
@@ -103,9 +116,7 @@ public class ImagePicker extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                uploadImage();
-
-
+                uploadPic();
 
 
 
@@ -114,36 +125,78 @@ public class ImagePicker extends AppCompatActivity {
         });
 
 
-}
-
-    private void uploadImage() {
-
-
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Map<String, Object> item = new HashMap<>();
-                item.put("vehicleImage", imageUri);
-                ref.setValue(item);
-                Toast.makeText(ImagePicker.this, "Image Updated", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // handle error
-            }
-        });
     }
+
+    private void uploadPic() {
+        if(imageUri != null){
+
+            StorageReference fileRef = storageReference.child(System.currentTimeMillis() + "."
+                    + getFileExtension(imageUri));
+
+            //upload to storage and realtime db
+            fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Uri downloadUri = uri;
+                            firebaseUser = authProfile.getCurrentUser();
+
+                            //set image after upload
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setPhotoUri(downloadUri).build();
+                            firebaseUser.updateProfile(profileUpdates);
+
+                            imagesModel model = new imagesModel(uri.toString());
+                            String modelId = ref.push().getKey();
+                            ref.setValue(model);
+                            Toast.makeText(ImagePicker.this, "Upload Successful", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+
+                    Toast.makeText(ImagePicker.this, "Uploading Failed", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+
+        }else{
+            Toast.makeText(ImagePicker.this, "Please Select Image to upload", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
+    private String getFileExtension(Uri uri) {
+
+        ContentResolver cr = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cr.getType(uri));
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == 100 && data != null && data.getData() != null){
+        if(requestCode == 2 && resultCode == RESULT_OK && data != null){
 
             imageUri = data.getData();
             imageView.setImageURI(imageUri);
 
+
         }
     }
+
+
+
+
 }

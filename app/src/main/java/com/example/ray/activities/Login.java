@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -205,6 +206,7 @@ public class Login extends AppCompatActivity {
 
                                 }
                                 else {
+
                                     Toast.makeText(Login.this, "Failed to login!", Toast.LENGTH_LONG).show();
                                     dialog.dismiss();
 
