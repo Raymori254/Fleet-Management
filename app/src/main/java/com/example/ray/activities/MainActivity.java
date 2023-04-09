@@ -48,7 +48,7 @@ public class MainActivity extends DrawerBaseActivity {
 
         Home homeFragment = new Home();
         Vehicles vehiclesFragment = new Vehicles();
-        settings settingsFragment = new settings();
+
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
@@ -71,11 +71,7 @@ public class MainActivity extends DrawerBaseActivity {
 
                         return true;
 
-                    case R.id.Settings_bottom:
 
-                        getSupportFragmentManager().beginTransaction().replace(R.id.FrameLayout, settingsFragment).commit();
-
-                        return true;
                 }
 
                 return false;

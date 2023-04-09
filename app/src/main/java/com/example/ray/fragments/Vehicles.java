@@ -177,8 +177,8 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
             public void onSuccess(Location location) {
                 if(location != null){
                     currentLocation = location;
-                    Toast.makeText(getContext(), currentLocation.getLatitude()
-                            +""+currentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), currentLocation.getLatitude()
+//                            +""+currentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
                     SupportMapFragment supportMapFragment = (SupportMapFragment)getChildFragmentManager()
                             .findFragmentById(R.id.google_map);
                     supportMapFragment.getMapAsync(Vehicles.this);
@@ -195,48 +195,48 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
         fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
             @Override
             public void onComplete(@NonNull Task<Location> task) {
-                    //initialize location
-                    Location location = task.getResult();
-                    if(location != null) {
-                        //Initialize geoCoder
-                        Geocoder geocoder = new Geocoder(getContext(),
-                                Locale.getDefault());
-                        //Initialize address list
-                        try {
-                            List<Address> addresses = geocoder.getFromLocation(
-                                    location.getLatitude(), location.getLongitude(), 1
-                            );
-                            //set latitude on TextView
-                            tv1.setText(Html.fromHtml(
-                                    "<font color = '#6200EE'><b>Latitude:</b><br></font>"
-                                    + addresses.get(0).getLatitude()
-                            ));
-                            //set longitude on TextView
-                            tv2.setText(Html.fromHtml(
-                                    "<font color = '#6200EE'><b>Longitude:</b><br></font>"
-                                            + addresses.get(0).getLongitude()
-                            ));
-                            //set country name
-                            tv3.setText(Html.fromHtml(
-                                    "<font color = '#6200EE'><b>Country Name:</b><br></font>"
-                                            + addresses.get(0).getCountryName()
-                            ));
-                            //set locality
-                            tv4.setText(Html.fromHtml(
-                                    "<font color = '#6200EE'><b>Locality:</b><br></font>"
-                                            + addresses.get(0).getLocality()
-                            ));
-                            //set address
-                            tv5.setText(Html.fromHtml(
-                                    "<font color = '#6200EE'><b>Address:</b><br></font>"
-                                            + addresses.get(0).getAddressLine(0)
-                            ));
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-
+                //initialize location
+                Location location = task.getResult();
+                if(location != null) {
+                    //Initialize geoCoder
+                    Geocoder geocoder = new Geocoder(getContext(),
+                            Locale.getDefault());
+                    //Initialize address list
+                    try {
+                        List<Address> addresses = geocoder.getFromLocation(
+                                location.getLatitude(), location.getLongitude(), 1
+                        );
+                        //set latitude on TextView
+                        tv1.setText(Html.fromHtml(
+                                "<font color = '#6200EE'><b>Latitude:</b><br></font>"
+                                        + addresses.get(0).getLatitude()
+                        ));
+                        //set longitude on TextView
+                        tv2.setText(Html.fromHtml(
+                                "<font color = '#6200EE'><b>Longitude:</b><br></font>"
+                                        + addresses.get(0).getLongitude()
+                        ));
+                        //set country name
+                        tv3.setText(Html.fromHtml(
+                                "<font color = '#6200EE'><b>Country Name:</b><br></font>"
+                                        + addresses.get(0).getCountryName()
+                        ));
+                        //set locality
+                        tv4.setText(Html.fromHtml(
+                                "<font color = '#6200EE'><b>Locality:</b><br></font>"
+                                        + addresses.get(0).getLocality()
+                        ));
+                        //set address
+                        tv5.setText(Html.fromHtml(
+                                "<font color = '#6200EE'><b>Address:</b><br></font>"
+                                        + addresses.get(0).getAddressLine(0)
+                        ));
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
+
+
+                }
             }
         });
     }
@@ -258,15 +258,15 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
                 .child("Current Location");
 
         reference.setValue(latLng).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(getContext(), "Location Saved", Toast.LENGTH_SHORT).show();
-                        }else{
-                            Toast.makeText(getContext(), "Location Not Saved", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+//                    Toast.makeText(getContext(), "Location Saved", Toast.LENGTH_SHORT).show();
+                }else{
+//                    Toast.makeText(getContext(), "Location Not Saved", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
     }
 

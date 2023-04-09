@@ -46,7 +46,7 @@ public class AdminDriversAdapter extends RecyclerView.Adapter<AdminDriversAdapte
         driversModel driver = driversList.get(position);
         holder.t1.setText(driversList.get(position).getFullName());
         holder.t2.setText(driversList.get(position).getEmail());
-        holder.t3.setText(driversList.get(position).getPhoneNumber());
+
 
     }
 
@@ -58,14 +58,14 @@ public class AdminDriversAdapter extends RecyclerView.Adapter<AdminDriversAdapte
 
     public static class driversViewHolder extends RecyclerView.ViewHolder {
 
-        TextView t1, t2, t3;
+        TextView t1, t2;
 
         public driversViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
             t1 = itemView.findViewById(R.id.nameET);
             t2 = itemView.findViewById(R.id.emailET);
-            t3 = itemView.findViewById(R.id.phoneNumberET);
+
 
             //set onclick listener on recyclerview
 

@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -18,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ray"
         tools:targetApi="31">
+        <activity
+            android:name=".activities.driverImagePicker"
+            android:exported="false" />
         <activity
             android:name=".activities.userLocation"
             android:exported="false" />

@@ -72,6 +72,7 @@
             android:textSize="15sp"
             android:autofillHints="child name" />
     </LinearLayout>
+   
 
 
 

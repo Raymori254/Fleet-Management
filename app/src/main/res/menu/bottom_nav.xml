@@ -11,9 +11,5 @@
         android:title="Vehicles"
         android:icon="@drawable/vehicles"/>
 
-    <item
-        android:id="@+id/Settings_bottom"
-        android:title="settings"
-        android:icon="@drawable/settings"/>
 
 </menu>

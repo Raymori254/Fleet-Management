@@ -100,16 +100,6 @@ public class ImagePicker extends AppCompatActivity {
 
 
 
-        cameraBT = findViewById(R.id.camera);
-        cameraBT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-
-
         //initialize upload button and set click listener
         upload = findViewById(R.id.picsubmit);
         upload.setOnClickListener(new View.OnClickListener() {

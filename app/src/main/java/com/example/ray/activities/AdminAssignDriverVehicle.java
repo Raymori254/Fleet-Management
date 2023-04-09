@@ -107,6 +107,8 @@ public class AdminAssignDriverVehicle extends AppCompatActivity implements Recyc
         String driverName = driversList.get(position).getFullName();
         String driverId = driversList.get(position).getUserID();
 
+
+
         //Getting the details from the previous page
         String vehicleId = "vehicleIdentification";
         String modelDescription = "vehicleModel";
@@ -195,7 +197,6 @@ public class AdminAssignDriverVehicle extends AppCompatActivity implements Recyc
                                 }
                             });
 
-                            Toast.makeText(AdminAssignDriverVehicle.this, "Vehicle Assigned", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(AdminAssignDriverVehicle.this, AdminVehiclesActivity.class));
 
 
@@ -203,6 +204,8 @@ public class AdminAssignDriverVehicle extends AppCompatActivity implements Recyc
 
                             }
                         }
+
+
 
 
                     @Override
