@@ -31,12 +31,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
 
 public class registrationPage extends AppCompatActivity {
 
     //Variable declarations
-    EditText FullName, Email, Password, confirmPasswordET;
+    EditText FullName, Email, Password, confirmPasswordET,PhoneNumber;
     Button createUser;
     TextView driver,loginBT;
 
@@ -54,6 +57,7 @@ public class registrationPage extends AppCompatActivity {
         //variable initialization
         FullName = findViewById(R.id.fullNames);
         Email = findViewById(R.id.enter_email);
+        PhoneNumber = findViewById(R.id.phoneNumber);
         Password = findViewById(R.id.enter_password);
         confirmPasswordET = findViewById(R.id.confirm_password);
         driver = findViewById(R.id.driver);
@@ -133,6 +137,7 @@ public class registrationPage extends AppCompatActivity {
                 String email = Email.getText().toString().trim();
                 String fullName = FullName.getText().toString().trim();
                 String password = Password.getText().toString().trim();
+                String phoneNumber = PhoneNumber.getText().toString().trim();
                 String confirmpassword = confirmPasswordET.getText().toString().trim();
                 String type = driver.getText().toString().trim();
 
@@ -188,6 +193,11 @@ public class registrationPage extends AppCompatActivity {
                     Email.requestFocus();
                     return;
                 }
+                if (phoneNumber.isEmpty()) {
+                    PhoneNumber.setError("A Phone Number is required");
+                    PhoneNumber.requestApplyInsets();
+                    return;
+                }
                 if (password.isEmpty()) {
                     Password.setError("Password is required");
                     Password.requestApplyInsets();
@@ -233,15 +243,28 @@ public class registrationPage extends AppCompatActivity {
                                     String userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
 
                                     @SuppressLint("RestrictedApi")
-                                    usersModel user =  new usersModel(fullName, email, password, type, userId);
+                                    usersModel user =  new usersModel(fullName, email,phoneNumber, password, type, userId);
 
                                     //sending user to DB
+                                    reference = FirebaseDatabase.getInstance().getReference("Users")
+                                            .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                                            .child("Personal Details");
+                                    Map<String, Object> item = new HashMap<>();
+                                    item.put("fullName", fullName);
+                                    item.put("email", email);
+                                    item.put("password", password);
+                                    item.put("type", type);
+                                    item.put("phoneNumber", phoneNumber);
+                                    item.put("userID", userId);
+
                                     FirebaseDatabase.getInstance().getReference("Users")
                                             .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
                                             .child("Personal Details")
-                                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>(){
+                                            .setValue(item).addOnCompleteListener(new OnCompleteListener<Void>(){
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
+
+
 
 
                                                     if (task.isSuccessful()) {

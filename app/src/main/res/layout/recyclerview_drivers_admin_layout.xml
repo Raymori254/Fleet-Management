@@ -69,32 +69,6 @@
                 tools:ignore="RtlSymmetry" />
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="135dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:paddingStart="12dp"
-                android:text="Mobile Number"
-                android:textColor="@color/primary"
-                android:textSize="18sp"
-                tools:ignore="HardcodedText,RtlSymmetry" />
-            <TextView
-                android:id="@+id/phoneNumberET"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:paddingStart="12dp"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                tools:ignore="RtlSymmetry" />
-
-        </LinearLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

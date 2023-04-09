@@ -21,23 +21,29 @@
         <entry key="..\:/Ray/app/src/main/res/drawable-v24/toolbar_options.xml" value="0.1" />
         <entry key="..\:/Ray/app/src/main/res/drawable-v24/update.xml" value="0.1" />
         <entry key="..\:/Ray/app/src/main/res/drawable-v24/users.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/drawable/edit.xml" value="0.198" />
+        <entry key="..\:/Ray/app/src/main/res/drawable/email.xml" value="0.211" />
         <entry key="..\:/Ray/app/src/main/res/drawable/eye.xml" value="0.1" />
         <entry key="..\:/Ray/app/src/main/res/drawable/ic_add.xml" value="0.1" />
         <entry key="..\:/Ray/app/src/main/res/drawable/image.xml" value="0.217" />
+        <entry key="..\:/Ray/app/src/main/res/drawable/message.xml" value="0.211" />
         <entry key="..\:/Ray/app/src/main/res/drawable/round_corner_delete.xml" value="0.2085" />
         <entry key="..\:/Ray/app/src/main/res/drawable/roundcorner.xml" value="0.2485" />
+        <entry key="..\:/Ray/app/src/main/res/drawable/sms.xml" value="0.211" />
         <entry key="..\:/Ray/app/src/main/res/drawable/textview_selector.xml" value="0.1" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_admin_assign_driver_vehicle.xml" value="0.2994791666666667" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_admin_assigned_vehicle_details.xml" value="0.3029891304347826" />
-        <entry key="..\:/Ray/app/src/main/res/layout/activity_admin_driver_details_page.xml" value="0.18327272091700048" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_admin_driver_details_page.xml" value="0.21818181061547676" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_admin_drivers.xml" value="0.21818181061547676" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_admin_main.xml" value="0.2879999900124293" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_admin_vehicle_details_page.xml" value="0.4363636212309535" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_admin_vehicles.xml" value="0.4363636212309535" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_assigned_vehicles_list.xml" value="0.1" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_drawer_base.xml" value="0.1" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_driver_image_picker.xml" value="0.3125" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_forgot_password.xml" value="0.24270833333333333" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_image_picker.xml" value="0.4363636212309535" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_image_picker2.xml" value="0.2994791666666667" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_login.xml" value="0.2879999900124293" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_main.xml" value="0.2879999900124293" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_splash_screen.xml" value="0.22864583333333333" />
@@ -46,6 +52,7 @@
         <entry key="..\:/Ray/app/src/main/res/layout/content_layout.xml" value="0.1" />
         <entry key="..\:/Ray/app/src/main/res/layout/dialog_admin_add_drivers.xml" value="0.2984375" />
         <entry key="..\:/Ray/app/src/main/res/layout/dialog_admin_add_vehicles.xml" value="0.21818181061547676" />
+        <entry key="..\:/Ray/app/src/main/res/layout/dialog_edit_driver_name.xml" value="0.25815217391304346" />
         <entry key="..\:/Ray/app/src/main/res/layout/fragment_about_u_s.xml" value="0.2694746376811594" />
         <entry key="..\:/Ray/app/src/main/res/layout/fragment_assigned_vehicles.xml" value="0.28442028985507245" />
         <entry key="..\:/Ray/app/src/main/res/layout/fragment_f_a_qs.xml" value="0.2694746376811594" />
@@ -53,7 +60,7 @@
         <entry key="..\:/Ray/app/src/main/res/layout/fragment_more_info.xml" value="0.3151041666666667" />
         <entry key="..\:/Ray/app/src/main/res/layout/fragment_profile.xml" value="0.2694746376811594" />
         <entry key="..\:/Ray/app/src/main/res/layout/fragment_settings.xml" value="0.2694746376811594" />
-        <entry key="..\:/Ray/app/src/main/res/layout/fragment_vehicles.xml" value="0.4166666666666667" />
+        <entry key="..\:/Ray/app/src/main/res/layout/fragment_vehicles.xml" value="0.291539245667686" />
         <entry key="..\:/Ray/app/src/main/res/layout/fragment_vehicles_in_garage.xml" value="0.28442028985507245" />
         <entry key="..\:/Ray/app/src/main/res/layout/login.xml" value="0.24270833333333333" />
         <entry key="..\:/Ray/app/src/main/res/layout/menu_item_layout.xml" value="0.1" />

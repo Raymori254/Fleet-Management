@@ -4,7 +4,7 @@ public class usersModel {
 
     //variable declaration
 
-    String FullName, Email, Password, Type, UserID;
+    String FullName, Email,PhoneNumber, Password, Type, UserID;
 
     //empty constructor
 
@@ -14,13 +14,14 @@ public class usersModel {
 
     //constructor with variables initialization
 
-    public usersModel(String FullName,String Email, String Password,String Type, String UserID){
+    public usersModel(String FullName,String Email, String PhoneNumber, String Password,String Type, String UserID){
 
         this.FullName = FullName;
         this.Email = Email;
         this.Password = Password;
         this.Type = Type;
         this.UserID = UserID;
+        this.PhoneNumber = PhoneNumber;
 
     }
 
@@ -64,5 +65,13 @@ public class usersModel {
 
     public void setUserID(String userID) {
         UserID = userID;
+    }
+
+    public String getPhoneNumber() {
+        return PhoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        PhoneNumber = phoneNumber;
     }
 }

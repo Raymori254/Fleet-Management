@@ -11,6 +11,8 @@
     <color name="secondary">#FFFFFF</color>
     <color name="tertiary">#F3E9F4</color>
     <color name="primary2">#03A9F4</color>
+    <color name="red">#F40303</color>
+    <color name="blue">#1D39D5</color>
     <color name="menu_item_text_color">#F8F4F4</color>
 
 

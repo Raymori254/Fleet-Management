@@ -1,107 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondary"
-    android:backgroundTint="@color/secondary"
-    android:id="@+id/FrameLayout">
-    <ScrollView
+    android:orientation="vertical"
+    tools:context=".activities.AdminAssignedVehicleDetails">
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/secondary"
-            android:orientation="vertical"
-            android:backgroundTint="@color/secondary">
+        android:layout_height="35dp"
+        android:background="@color/primary"
+        android:text="Driver Details"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingStart="12dp"
+        android:textColor="@color/secondary"
+        android:textSize="18sp"
+        android:layout_marginBottom="5dp"
+        tools:ignore="HardcodedText,RtlSymmetry"/>
 
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/my_drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#36000000"
-                android:backgroundTint="@color/black"
-                android:gravity="center"
+                android:background="@color/secondary"
                 android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.494"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:backgroundTint="@color/secondary">
+
+
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/black"
+                        android:gravity="center"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/fullNameID"
+
+                        <ImageView
+                            android:layout_marginTop="50dp"
+                            android:id="@+id/ImageID"
+                            android:layout_width="200dp"
+                            android:layout_height="250dp"
+                            android:layout_marginBottom="5dp"
+                            android:fontFamily="monospace"
+                            android:paddingStart="12dp"
+                            android:background="@drawable/profile"
+                            android:text="plate Number"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            tools:ignore="RtlSymmetry" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:fontFamily="monospace"
-                        android:paddingStart="12dp"
-                        android:text="Full Names"
-                        android:textColor="@color/black"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Name"
+                            android:paddingStart="12dp"
+                            android:textColor="@color/primary"
+                            android:textSize="18sp"
+                            android:layout_marginBottom="10dp"
+                            tools:ignore="HardcodedText,RtlSymmetry"/>
 
-                    <TextView
-                        android:id="@+id/emailID"
+                        <TextView
+                            android:id="@+id/fullNameID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="12dp"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:fontFamily="monospace"
-                        android:paddingStart="12dp"
-                        android:text="Email Address"
-                        android:textColor="@color/black"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        tools:ignore="RtlSymmetry" />
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:paddingStart="12dp"
+                            android:text="Email"
+                            android:textColor="@color/primary"
+                            android:textSize="18sp"
+                            tools:ignore="HardcodedText,RtlSymmetry" />
+                        <TextView
+                            android:id="@+id/emailID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:paddingStart="12dp"
+                            android:textColor="@color/black"
+                            android:drawableEnd="@drawable/email"
+                            android:textSize="18sp"
+                            tools:ignore="RtlSymmetry" />
 
-                    <TextView
-                        android:id="@+id/phoneNumberID"
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:fontFamily="monospace"
-                        android:paddingStart="12dp"
-                        android:text="Phone Number"
-                        android:textColor="@color/black"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        tools:ignore="RtlSymmetry" />
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:paddingStart="12dp"
+                            android:text="Phone Number"
+                            android:textColor="@color/primary"
+                            android:textSize="18sp"
+                            tools:ignore="HardcodedText,RtlSymmetry" />
+                        <TextView
+                            android:id="@+id/phoneID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:paddingStart="12dp"
+                            android:drawableEnd="@drawable/sms"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="12dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="Status"
+                            android:textColor="@color/primary"
+                            android:textSize="18sp"
+                            tools:ignore="HardcodedText,RtlSymmetry" />
+                        <TextView
+                            android:id="@+id/statusID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:paddingStart="12dp"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
 
 
+        </ScrollView>
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 
 
-
-
-        </LinearLayout>
-
-
-    </ScrollView>
-
-
-</FrameLayout>
+</LinearLayout>

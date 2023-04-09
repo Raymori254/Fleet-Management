@@ -1,29 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".fragments.Profile">
+<TextView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.Profile">
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/my_drawer_layout"
+    android:layout_height="35dp"
+    android:background="@color/primary"
+    android:text="Profile Details"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:paddingStart="12dp"
+    android:textColor="@color/secondary"
+    android:textSize="18sp"
+    android:layout_marginBottom="5dp"
+    tools:ignore="HardcodedText,RtlSymmetry"/>
+
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/my_drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ScrollView
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="wrap_content"
+            android:background="@color/secondary"
+            android:orientation="vertical"
+            android:backgroundTint="@color/secondary">
+
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <!-- TODO: Update blank fragment layout -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Profile" />
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="12dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Status"
+                        android:textColor="@color/primary"
+                        android:textSize="18sp"
+                        tools:ignore="HardcodedText,RtlSymmetry" />
+                    <TextView
+                        android:id="@+id/statusID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:paddingStart="12dp"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:ignore="RtlSymmetry" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
-    </androidx.drawerlayout.widget.DrawerLayout>
+                </LinearLayout>
 
 
-</FrameLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:paddingStart="12dp"
+                        android:textColor="@color/primary"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="10dp"
+                        tools:ignore="HardcodedText,RtlSymmetry"/>
+
+                    <TextView
+                        android:id="@+id/fullNameID"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="12dp"
+                        android:layout_marginBottom="20dp"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:ignore="RtlSymmetry" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="Phone Number"
+                        android:paddingStart="12dp"
+                        android:textColor="@color/primary"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="10dp"
+                        tools:ignore="HardcodedText,RtlSymmetry"/>
+
+                    <TextView
+                        android:id="@+id/phoneNumberID"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="12dp"
+                        android:layout_marginBottom="20dp"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:ignore="RtlSymmetry" />
+
+
+                </LinearLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:id="@+id/editDetails"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginVertical="12dp"
+                    android:layout_marginBottom="25dp"
+                    android:background="@drawable/edit_text_border"
+                    android:gravity="center"
+                    android:text="Edit Details"
+                    android:textColor="@color/primary">
+                </androidx.appcompat.widget.AppCompatButton>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/black"
+                android:gravity="center"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/ImageID"
+                    android:layout_width="200dp"
+                    android:layout_height="250dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="monospace"
+                    android:paddingStart="12dp"
+                    android:background="@drawable/profile"
+                    android:text="plate Number"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:id="@+id/editPicture"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginVertical="12dp"
+                    android:layout_marginBottom="25dp"
+                    android:background="@drawable/edit_text_border"
+                    android:gravity="center"
+                    android:text="Edit Picture"
+                    android:textColor="@color/primary">
+                </androidx.appcompat.widget.AppCompatButton>
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</androidx.drawerlayout.widget.DrawerLayout>
+
+
+
+</LinearLayout>
