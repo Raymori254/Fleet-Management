@@ -18,6 +18,7 @@ import com.example.ray.fragments.Profile;
 import com.example.ray.fragments.Vehicles;
 import com.example.ray.fragments.moreInfo;
 import com.example.ray.fragments.settings;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -99,4 +100,8 @@ public class MainActivity extends DrawerBaseActivity {
 
     }
 
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+
+    }
 }

@@ -17,18 +17,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.ray.R;
-import com.example.ray.fragments.AboutUs;
+import com.example.ray.fragments.ContactUs;
 import com.example.ray.fragments.FAQs;
-import com.example.ray.fragments.Home;
 import com.example.ray.fragments.Profile;
-import com.example.ray.fragments.moreInfo;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class DrawerBaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public abstract class DrawerBaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     //variables declaration
 
@@ -112,18 +111,6 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
             }
             break;
 
-            case R.id.info:
-
-                fragment = new moreInfo();
-
-            {
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.FrameLayout, fragment);
-                ft.commit();
-
-            }
-            break;
-
 
             case R.id.FAQ:
 
@@ -140,7 +127,7 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
 
             case R.id.nav_settings:
 
-                fragment = new AboutUs();
+                fragment = new ContactUs();
 
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.FrameLayout, fragment);
@@ -164,5 +151,7 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
             getSupportActionBar().setTitle(titleString);
         }
     }
+
+    public abstract void onMapReady(@NonNull GoogleMap googleMap);
 }
 
