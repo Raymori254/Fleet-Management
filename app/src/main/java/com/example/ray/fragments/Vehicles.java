@@ -62,7 +62,7 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
 
     //FirebaseDatabase
     FirebaseDatabase db;
-    DatabaseReference reference,imageRef;
+    DatabaseReference reference,imageRef,checkRef;
 
     //Location
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -86,6 +86,40 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
         modelTV = view.findViewById(R.id.modelDescriptionIDFrag);
         plateTV = view.findViewById(R.id.plateNumberIDFrag);
         image = view.findViewById(R.id.ImageID);
+
+        //DB
+        db = FirebaseDatabase.getInstance();
+        //check if assigned vehicle exists
+        checkRef = db.getReference().child("Users").child((FirebaseAuth.getInstance().getCurrentUser()).getUid());
+        checkRef.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.child("Assigned Vehicle").exists()) {
+
+                    view.findViewById(R.id.regular_layout).setVisibility(View.VISIBLE);
+                    view.findViewById(R.id.empty_layout).setVisibility(View.GONE);
+
+
+                } else {
+
+                    view.findViewById(R.id.regular_layout).setVisibility(View.GONE);
+                    view.findViewById(R.id.empty_layout).setVisibility(View.VISIBLE);
+
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
 
         ref = FirebaseDatabase.getInstance().getReference().child("Users")
                 .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())

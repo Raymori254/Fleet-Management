@@ -1,31 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AboutUs">
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/primary"
+        android:text="Contact Information"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingStart="12dp"
+        android:textColor="@color/secondary"
+        android:textSize="18sp"
+        android:layout_marginBottom="5dp"
+        tools:ignore="HardcodedText,RtlSymmetry"/>
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/my_drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <!-- TODO: Update blank fragment layout -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="About Us"
-                    tools:ignore="HardcodedText"
-                    />
+                android:layout_height="wrap_content"
+                android:background="@color/secondary"
+                android:orientation="vertical"
+                android:backgroundTint="@color/secondary">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="12dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="Email"
+                            android:textColor="@color/primary"
+                            android:textSize="18sp"
+                            tools:ignore="HardcodedText,RtlSymmetry" />
+                        <TextView
+                            android:id="@+id/emailID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:paddingStart="12dp"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Phone Number"
+                            android:paddingStart="12dp"
+                            android:textColor="@color/primary"
+                            android:textSize="18sp"
+                            android:layout_marginBottom="10dp"
+                            tools:ignore="HardcodedText,RtlSymmetry"/>
+
+                        <TextView
+                            android:id="@+id/numberID"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="12dp"
+                            android:layout_marginBottom="20dp"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            tools:ignore="RtlSymmetry" />
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="40dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/instagramID"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:paddingStart="12dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/instagram"
+                            android:autoLink="web"
+                            android:textSize="0sp"
+                            tools:ignore="RtlSymmetry" />
+                        <TextView
+                            android:id="@+id/twitterID"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:paddingStart="12dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/twitter"
+                            android:autoLink="web"
+                            android:textSize="0sp"
+                            tools:ignore="RtlSymmetry" />
+                        <TextView
+                            android:id="@+id/fbID"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:paddingStart="12dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:background="@drawable/fb"
+                            android:autoLink="web"
+                            android:textSize="0sp"
+                            tools:ignore="RtlSymmetry" />
+                    </LinearLayout>
+
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
         </ScrollView>
     </androidx.drawerlayout.widget.DrawerLayout>
 
 
 
-</FrameLayout>
+</LinearLayout>
