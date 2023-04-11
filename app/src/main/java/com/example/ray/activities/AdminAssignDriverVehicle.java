@@ -3,6 +3,7 @@ package com.example.ray.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.paging.PagingSource;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -163,7 +164,7 @@ public class AdminAssignDriverVehicle extends AppCompatActivity implements Recyc
                                     Map<String, Object> item = new HashMap<>();
                                     item.put("latitude", -1.286389);
                                     item.put("longitude", 36.817223);
-                                    reference.setValue(item);
+                                    reference.updateChildren(item);
 
                                 }
 
@@ -197,7 +198,8 @@ public class AdminAssignDriverVehicle extends AppCompatActivity implements Recyc
                                 }
                             });
 
-                            startActivity(new Intent(AdminAssignDriverVehicle.this, AdminVehiclesActivity.class));
+                            startActivity(new Intent(AdminAssignDriverVehicle.this, AdminMainActivity.class));
+
 
 
 

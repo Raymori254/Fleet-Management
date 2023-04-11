@@ -44,8 +44,10 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 
 public class Vehicles extends Fragment implements OnMapReadyCallback {
@@ -285,22 +287,31 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
         googleMap.addMarker(markerOptions);
 
+
         //Add location to database
         db = FirebaseDatabase.getInstance();
         reference = db.getReference().child("Users")
                 .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
                 .child("Current Location");
+        Double lat = currentLocation.getLatitude();
+        Double longi = currentLocation.getLongitude();
 
-        reference.setValue(latLng).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-//                    Toast.makeText(getContext(), "Location Saved", Toast.LENGTH_SHORT).show();
-                }else{
-//                    Toast.makeText(getContext(), "Location Not Saved", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        Map<String, Object> item = new HashMap<>();
+        item.put("latitude", lat);
+        item.put("longitude", longi);
+        reference.updateChildren(item);
+
+
+//        reference.setValue(latLng).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                if(task.isSuccessful()){
+////                    Toast.makeText(getContext(), "Location Saved", Toast.LENGTH_SHORT).show();
+//                }else{
+////                    Toast.makeText(getContext(), "Location Not Saved", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
 
     }
 

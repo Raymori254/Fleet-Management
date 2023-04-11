@@ -26,7 +26,7 @@
         android:orientation="vertical"
         android:backgroundTint="@color/secondary"
         android:id="@+id/regular_layout"
-        android:visibility="gone">
+      >
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -141,6 +141,7 @@
                         android:textColor="@color/primary"
                         android:textSize="18sp"
                         tools:ignore="RtlSymmetry" />
+
 
                     <fragment
                         android:id="@+id/google_map"

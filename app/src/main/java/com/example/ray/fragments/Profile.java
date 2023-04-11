@@ -141,13 +141,13 @@ public class Profile extends Fragment {
                 if(snapshot.child("Assigned Vehicle").exists()){
 
                     status.setText("You have a Vehicle Assigned");
-                    status.setTextColor(getResources().getColor(R.color.blue));
+//                    status.setTextColor(getResources().getColor(R.color.blue));
 
                 }
                 else{
 
                     status.setText("You do not have a Vehicle Assigned");
-                    status.setTextColor(getResources().getColor(R.color.red));
+//                    status.setTextColor(getResources().getColor(R.color.red));
 
                 }
 

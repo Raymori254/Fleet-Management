@@ -130,9 +130,8 @@ public class AdminAssignedVehicleDetails extends DrawerbaseActivity2 {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-
-                            Double latitude = snapshot.child("latitude").getValue(Double.class);
-                            Double longitude = (Double) snapshot.child("longitude").getValue(Double.class);
+                            Double latitude = (Double) snapshot.child("latitude").getValue();
+                            Double longitude = (Double) snapshot.child("longitude").getValue();
 
 
 
