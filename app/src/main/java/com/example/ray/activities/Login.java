@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.InputType;
 import android.util.Log;
 import android.util.Patterns;
@@ -40,6 +41,7 @@ public class Login extends AppCompatActivity {
     EditText email, Password;
     Button LoginBT;
     TextView register,forgotPassword;
+    Handler handler;
 
     //firebase variables declarations
 
@@ -47,6 +49,7 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     FirebaseDatabase db;
     DatabaseReference ref;
+    
 
 
     @Override
@@ -60,8 +63,10 @@ public class Login extends AppCompatActivity {
         LoginBT = (Button) findViewById(R.id.login);
         email = (EditText) findViewById(R.id.enter_email1);
         Password = (EditText) findViewById(R.id.enter_password1);
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar2);
         forgotPassword = (TextView) findViewById(R.id.forgotPassword);
+
+
+
 
         //Toggle Button
         ToggleButton passwordToggleButton = findViewById(R.id.password_toggle_button);
@@ -102,6 +107,8 @@ public class Login extends AppCompatActivity {
 
             private void userLogin() {
 
+
+
                 //user credentials are gotten and converted back to String
                 String Email = email.getText().toString().trim();//trim caters for any extra space the user might create
                 String password = Password.getText().toString().trim();
@@ -128,7 +135,8 @@ public class Login extends AppCompatActivity {
                 }
 
                 ProgressDialog dialog = new ProgressDialog(Login.this);
-                dialog.setMessage("Signing In...");
+
+
 
 
                 //sign user in with email and password
@@ -138,50 +146,56 @@ public class Login extends AppCompatActivity {
                             public void onComplete(@NonNull Task task) {
 
                                 if(task.isSuccessful()){
+                                    dialog.setMessage("Signing In...");
+                                    dialog.show();
 
-                                    //checking to see if email is verified
-                                    dialog.setMessage("Checking Verification...");
+                                    handler = new Handler();
+                                    handler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
 
-                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                            //checking to see if email is verified
 
-                                    assert user != null;
-                                    if(user.isEmailVerified()) {
+                                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                                        String currentUserId = user.getUid();
+                                            assert user != null;
+                                            if(user.isEmailVerified()) {
 
-                                        db = FirebaseDatabase.getInstance();
-                                        ref = db.getReference();
+                                                String currentUserId = user.getUid();
 
-                                        FirebaseDatabase db = FirebaseDatabase.getInstance();
-                                        DatabaseReference ref = db.getReference()
-                                                .child("Users")
-                                                .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
-                                                .child("Personal Details")
-                                                .child("type");
+                                                db = FirebaseDatabase.getInstance();
+                                                ref = db.getReference();
+
+                                                FirebaseDatabase db = FirebaseDatabase.getInstance();
+                                                DatabaseReference ref = db.getReference()
+                                                        .child("Users")
+                                                        .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                                                        .child("Personal Details")
+                                                        .child("type");
 
 
-                                        //Checking the usertype before redirecting to appropriate screens
+                                                //Checking the usertype before redirecting to appropriate screens
 
                                                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                                                     @Override
                                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                      if (snapshot.exists()){
-                                                          String userlevel = snapshot.getValue(String.class);
+                                                        if (snapshot.exists()){
+                                                            String userlevel = snapshot.getValue(String.class);
 
-                                                          if (userlevel.equals("driver")){
-                                                              startActivity(new Intent(Login.this, MainActivity.class));
-                                                              finish();
-
-                                                          }
-                                                          else if (userlevel.equals("admin")){
-
-                                                              startActivity(new Intent(Login.this, AdminMainActivity.class));
+                                                            if (userlevel.equals("driver")){
+                                                                startActivity(new Intent(Login.this, MainActivity.class));
                                                                 finish();
-                                                          }
-                                                      } else{
-                                                          Toast.makeText(Login.this, "User data does not exist.", Toast.LENGTH_SHORT).show();
 
-                                                      }
+                                                            }
+                                                            else if (userlevel.equals("admin")){
+
+                                                                startActivity(new Intent(Login.this, AdminMainActivity.class));
+                                                                finish();
+                                                            }
+                                                        } else{
+                                                            Toast.makeText(Login.this, "User data does not exist.", Toast.LENGTH_SHORT).show();
+
+                                                        }
                                                     }
 
                                                     @Override
@@ -197,12 +211,17 @@ public class Login extends AppCompatActivity {
 
 
 
-                                    } else{
-                                        //send email verification link
-                                        user.sendEmailVerification();
-                                        Toast.makeText(Login.this, "Check your Email to verify account To sign In", Toast.LENGTH_LONG).show();
-                                        dialog.dismiss();
-                                }
+                                            } else{
+                                                //send email verification link
+                                                user.sendEmailVerification();
+                                                Toast.makeText(Login.this, "Check your Email to verify account To sign In", Toast.LENGTH_LONG).show();
+                                                dialog.dismiss();
+                                            }
+
+                                        }
+                                    },1500);
+
+
 
                                 }
                                 else {
@@ -238,6 +257,7 @@ public class Login extends AppCompatActivity {
 
             }
         });
+
 
     }
 

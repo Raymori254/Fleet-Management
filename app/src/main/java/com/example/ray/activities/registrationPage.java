@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -42,6 +43,7 @@ public class registrationPage extends AppCompatActivity {
     EditText FullName, Email, Password, confirmPasswordET,PhoneNumber;
     Button createUser;
     TextView driver,loginBT;
+    Handler handler;
 
     //firebase declarations
     FirebaseAuth myAuth;
@@ -72,6 +74,9 @@ public class registrationPage extends AppCompatActivity {
         ToggleButton passwordToggleButton = findViewById(R.id.password_toggle_button);
         passwordToggleButton.setTextOn("On");
         passwordToggleButton.setTextOff("Off");
+
+        //Handler
+        handler = new Handler();
 
 
 
@@ -133,7 +138,6 @@ public class registrationPage extends AppCompatActivity {
             private void registerUser() {
 
                 //Takes the inputs from the registration forms and converting them to strings
-                
                 String email = Email.getText().toString().trim();
                 String fullName = FullName.getText().toString().trim();
                 String password = Password.getText().toString().trim();
@@ -142,41 +146,7 @@ public class registrationPage extends AppCompatActivity {
                 String type = driver.getText().toString().trim();
 
 
-//                //to ensure confirm password matches with password provided
-//
-//                confirmPasswordET.addTextChangedListener(new TextWatcher() {
-//                    @Override
-//                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                        //nothing happens
-//                    }
-//
-//                    @Override
-//                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//
-//                        // Compare the strings
-//                        if (password.equals(confirmpassword)) {
-//                            // Passwords match, do something here
-//                            // Passwords match, clear the error message
-//
-//                            confirmPasswordET.setText("");
-//                        } else {
-//                            // Passwords don't match, show the error message
-//                            confirmPasswordET.setError("Passwords should match");
-//
-//                        }
-//
-//                    }
-//
-//                    @Override
-//                    public void afterTextChanged(Editable editable) {
-//
-//                    }
-//                });
 
-
-
-                //if statements to validate the inputs above
 
                 if (fullName.isEmpty()) {
                     FullName.setError("full names are required");
@@ -186,6 +156,11 @@ public class registrationPage extends AppCompatActivity {
                 if (email.isEmpty()) {
                     Email.setError("An email is required");
                     Email.requestApplyInsets();
+                    return;
+                }
+                if (phoneNumber.isEmpty()) {
+                    PhoneNumber.setError("A Phone Number is required");
+                    PhoneNumber.requestApplyInsets();
                     return;
                 }
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -228,8 +203,6 @@ public class registrationPage extends AppCompatActivity {
 
                 //activate progressdialog if all is ok
                 ProgressDialog dialog = new ProgressDialog(registrationPage.this);
-                dialog.setMessage("Registering...");
-                dialog.show();
 
                 //create and add user to db
                 myAuth.createUserWithEmailAndPassword(email, password)
@@ -237,69 +210,70 @@ public class registrationPage extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 //check to see if the user is registered
+                                dialog.setMessage("Registering...");
+                                dialog.show();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if (task.isSuccessful()){
 
-                                if (task.isSuccessful()){
+                                            String userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+                                            @SuppressLint("RestrictedApi")
+                                            usersModel user =  new usersModel(fullName, email,phoneNumber, password, type, userId);
 
-                                    String userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+                                            //sending user to DB
+                                            reference = FirebaseDatabase.getInstance().getReference("Users")
+                                                    .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                                                    .child("Personal Details");
+                                            Map<String, Object> item = new HashMap<>();
+                                            item.put("fullName", fullName);
+                                            item.put("email", email);
+                                            item.put("password", password);
+                                            item.put("type", type);
+                                            item.put("phoneNumber", phoneNumber);
+                                            item.put("userID", userId);
 
-                                    @SuppressLint("RestrictedApi")
-                                    usersModel user =  new usersModel(fullName, email,phoneNumber, password, type, userId);
+                                            FirebaseDatabase.getInstance().getReference("Users")
+                                                    .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                                                    .child("Personal Details")
+                                                    .setValue(item).addOnCompleteListener(new OnCompleteListener<Void>(){
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
 
-                                    //sending user to DB
-                                    reference = FirebaseDatabase.getInstance().getReference("Users")
-                                            .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
-                                            .child("Personal Details");
-                                    Map<String, Object> item = new HashMap<>();
-                                    item.put("fullName", fullName);
-                                    item.put("email", email);
-                                    item.put("password", password);
-                                    item.put("type", type);
-                                    item.put("phoneNumber", phoneNumber);
-                                    item.put("userID", userId);
+                                                            if (task.isSuccessful()) {
+                                                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                                    FirebaseDatabase.getInstance().getReference("Users")
-                                            .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
-                                            .child("Personal Details")
-                                            .setValue(item).addOnCompleteListener(new OnCompleteListener<Void>(){
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
+                                                                if (user.isEmailVerified()) {
+                                                                    dialog.dismiss();
+                                                                    Intent intent = new Intent(registrationPage.this, Login.class);
+                                                                    intent.putExtra("userId", userId);
+                                                                    startActivity(intent);
+                                                                } else {
 
+                                                                    user.sendEmailVerification();
+                                                                    Toast.makeText(registrationPage.this, "Check your Email to verify account", Toast.LENGTH_LONG).show();
+                                                                    dialog.dismiss();
+                                                                    finish();
+                                                                }
+                                                            } else {
+                                                                Toast.makeText(registrationPage.this, "Registration Failed! Try again!", Toast.LENGTH_LONG).show();
+                                                                dialog.dismiss();
+                                                            }
 
-
-
-                                                    if (task.isSuccessful()) {
-                                                        dialog.setMessage("Checking Verification...");
-                                                        dialog.show();
-                                                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-                                                        if (user.isEmailVerified()) {
-                                                            dialog.dismiss();
-                                                            Intent intent = new Intent(registrationPage.this, Login.class);
-                                                            intent.putExtra("userId", userId);
-                                                            startActivity(intent);
-                                                        } else {
-
-                                                            user.sendEmailVerification();
-                                                            Toast.makeText(registrationPage.this, "Check your Email to verify account", Toast.LENGTH_LONG).show();
-                                                            dialog.dismiss();
-                                                            finish();
                                                         }
-                                                    } else {
-                                                        Toast.makeText(registrationPage.this, "Registration Failed! Try again!", Toast.LENGTH_LONG).show();
-                                                        dialog.dismiss();
-                                                    }
+                                                    });
 
-                                                }
-                                            });
+                                        }else {
+                                            Toast.makeText(registrationPage.this, "Registration Failed! Try again!", Toast.LENGTH_LONG).show();
+                                            dialog.dismiss();
+                                        }
+                                    }
+                                },2000);
 
-                                }else {
-                                    Toast.makeText(registrationPage.this, "Registration Failed! Try again!", Toast.LENGTH_LONG).show();
-                                    dialog.dismiss();
-                                }
                             }
                         });
 
-                dialog.dismiss();
+
 
 
 
