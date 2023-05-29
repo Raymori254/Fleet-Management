@@ -40,7 +40,7 @@ public class AdminAssignedVehicleDetails extends DrawerbaseActivity2 {
     SupportMapFragment supportMapFragment;
     ImageView image;
     Button retrieveLocation, returnVehicle;
-    DatabaseReference ref, reference, reff, refer, imageRef;
+    DatabaseReference ref, reference,references, reff, refer, imageRef;
     FirebaseDatabase db;
     ActivityAdminAssignedVehicleDetailsBinding activityAdminAssignedVehicleDetailsBinding;
 
@@ -122,6 +122,8 @@ public class AdminAssignedVehicleDetails extends DrawerbaseActivity2 {
         retrieveLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // Retrieve the location from the database
                 db = FirebaseDatabase.getInstance();
                 ref = db.getReference().child("Users")
                         .child(finalDriverId)
@@ -129,45 +131,53 @@ public class AdminAssignedVehicleDetails extends DrawerbaseActivity2 {
                 ref.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Double latitude = snapshot.child("latitude").getValue(Double.class);
+                        Double longitude = snapshot.child("longitude").getValue(Double.class);
 
-                            Double latitude = (Double) snapshot.child("latitude").getValue();
-                            Double longitude = (Double) snapshot.child("longitude").getValue();
+                        supportMapFragment.getMapAsync(new OnMapReadyCallback() {
+                            @Override
+                            public void onMapReady(@NonNull GoogleMap googleMap) {
+                                googleMap.clear(); // Clear loading marker
 
-
-
-                            supportMapFragment.getMapAsync(new OnMapReadyCallback() {
-                                @Override
-                                public void onMapReady(@NonNull GoogleMap googleMap) {
+                                if (latitude != null && longitude != null) {
                                     LatLng location = new LatLng(latitude, longitude);
 
-                                    //create marker options
-
+                                    // Create marker options
                                     MarkerOptions markerOptions = new MarkerOptions().position(location)
-                                            .title(finalDriver +" location");
+                                            .title(finalDriver + " location");
                                     googleMap.animateCamera(CameraUpdateFactory.newLatLng(location));
-                                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location,15));
+                                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 15));
                                     googleMap.addMarker(markerOptions);
-
-                                    //Add Marker on map
-                                    googleMap.addMarker(markerOptions);
+                                } else {
+                                    Toast.makeText(AdminAssignedVehicleDetails.this, "Location not available", Toast.LENGTH_SHORT).show();
                                 }
-
-
-                            });
-
-
-
+                            }
+                        });
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(AdminAssignedVehicleDetails.this, "Failed to retrieve location", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                // Update the activity UI first
+                supportMapFragment.getMapAsync(new OnMapReadyCallback() {
+                    @Override
+                    public void onMapReady(@NonNull GoogleMap googleMap) {
+                        // Clear previous markers
+                        googleMap.clear();
 
+                        // Display a loading marker while retrieving the location
+                        LatLng loadingLocation = new LatLng(0, 0);
+                        MarkerOptions loadingMarkerOptions = new MarkerOptions().position(loadingLocation).title("Loading...");
+                        googleMap.addMarker(loadingMarkerOptions);
                     }
                 });
 
 
             }
         });
+
 
 
 
@@ -233,11 +243,19 @@ public class AdminAssignedVehicleDetails extends DrawerbaseActivity2 {
                                 .child("Assigned Vehicle");
                         refer.removeValue();
 
+
+                        //delete the location when vehicle is returned
+                        references = db.getReference().child("Users")
+                                .child(finalDriverId)
+                                .child("Current Location");
+                        references.removeValue();
+
                         startActivity(new Intent(AdminAssignedVehicleDetails.this, AdminMainActivity.class));
 
 
 
                     }
+
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override

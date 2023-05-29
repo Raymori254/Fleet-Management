@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.ray.R;
 import com.example.ray.databinding.ActivityAdminMainBinding;
@@ -19,6 +20,8 @@ public class AdminMainActivity extends DrawerbaseActivity2{
 
     //creating button variables
     Button vehiclesBT, driversBT;
+    private long backPressed;
+    private static  final int TIME_INTERVAL = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,20 @@ public class AdminMainActivity extends DrawerbaseActivity2{
 
             }
         });
+
+    }
+
+    //action for when the back button on device is pressed
+    public void onBackPressed(){
+
+        if(backPressed + TIME_INTERVAL > System.currentTimeMillis()){
+            super.onBackPressed();
+            finishAffinity();
+        }
+        else {
+            Toast.makeText(this, "Press Back Again To Exit", Toast.LENGTH_SHORT).show();
+        }
+        backPressed = System.currentTimeMillis();
 
     }
 }

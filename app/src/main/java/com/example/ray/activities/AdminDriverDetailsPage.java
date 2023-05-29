@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -15,6 +16,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Telephony;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -130,8 +132,29 @@ public class AdminDriverDetailsPage extends AppCompatActivity {
 
                 Intent sendIntent = new Intent(Intent.ACTION_VIEW);
                 sendIntent.putExtra("address", finalPhone1);
-                sendIntent.setType("vnd.android-dir/mms-sms");
-                startActivity(sendIntent);
+
+                try {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setType("vnd.android-dir/mms-sms");
+
+                    // Get the package name of the default messaging app
+                    String defaultSmsPackage = Telephony.Sms.getDefaultSmsPackage(AdminDriverDetailsPage.this);
+
+                    if (defaultSmsPackage != null) {
+                        // Set the package name to ensure it opens in the default messaging app
+                        intent.setPackage(defaultSmsPackage);
+                    }
+
+                    // Add any extras if required
+                    startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    // Handle the exception here
+                    Toast.makeText(AdminDriverDetailsPage.this, "No messaging application found", Toast.LENGTH_SHORT).show();
+                    // Provide an alternative action or display an error message
+                }
+
+
+
 
             }
         });
