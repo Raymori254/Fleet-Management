@@ -41,4 +41,10 @@ public class SignInAs extends AppCompatActivity {
             }
         });
     }
+
+    //action for when the back button on device is pressed
+    public void onBackPressed(){
+        finishAffinity();
+
+    }
 }
