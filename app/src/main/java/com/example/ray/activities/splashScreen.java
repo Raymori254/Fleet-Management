@@ -42,66 +42,78 @@ public class splashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
 
             public void run(){
-//                Intent intent = new Intent(splashScreen.this, Login.class);
-//                startActivity(intent);
-//                finish();
 
-                FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
-                if(mFirebaseUser!=null){
-                    //there is some user logged in take to home page
+                if (NetworkUtils.isNetworkAvailable(splashScreen.this)){
 
-                    //check the access level before redirecting
+                    FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
+                    if(mFirebaseUser!=null){
+                        //there is some user logged in take to home page
 
-                    //Checking the usertype before redirecting to appropriate screens
+                        //check the access level before redirecting
 
-                    FirebaseDatabase db = FirebaseDatabase.getInstance();
-                    DatabaseReference ref = db.getReference()
-                            .child("Users")
-                            .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
-                            .child("Personal Details")
-                            .child("type");
+                        //Checking the usertype before redirecting to appropriate screens
 
-                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.exists()){
-                                String userlevel = snapshot.getValue(String.class);
+                        FirebaseDatabase db = FirebaseDatabase.getInstance();
+                        DatabaseReference ref = db.getReference()
+                                .child("Users")
+                                .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                                .child("Personal Details")
+                                .child("type");
 
-                                if (userlevel.equals("driver")){
-                                    startActivity(new Intent(splashScreen.this, MainActivity.class));
+                        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()){
+                                    String userlevel = snapshot.getValue(String.class);
+
+                                    if (userlevel.equals("driver")){
+                                        startActivity(new Intent(splashScreen.this, MainActivity.class));
+                                        finish();
+
+                                    }
+                                    else if (userlevel.equals("admin")){
+
+                                        startActivity(new Intent(splashScreen.this, AdminMainActivity.class));
+                                        finish();
+                                    }
+                                } else{
+
+                                    Intent intent = new Intent(splashScreen.this, SignInAs.class);
+                                    startActivity(intent);
                                     finish();
 
+
                                 }
-                                else if (userlevel.equals("admin")){
+                            }
 
-                                    startActivity(new Intent(splashScreen.this, AdminMainActivity.class));
-                                    finish();
-                                }
-                            } else{
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
-                                Intent intent = new Intent(splashScreen.this, Login.class);
-                                startActivity(intent);
-                                finish();
-
+                                //Do nothing
 
                             }
-                        }
+                        });
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                           //Do nothing
-
-                        }
-                    });
+                    }
+                    else{
+                        startActivity(new Intent(splashScreen.this, SignInAs.class));
+                    }
 
                 }
                 else{
-                    startActivity(new Intent(splashScreen.this, Login.class));
+                    Intent intent = new Intent(splashScreen.this, noConnection.class);
+                    startActivity(intent);
                 }
+
+
 
             }
         },1000);
+
+    }
+    //action for when the back button on device is pressed
+    public void onBackPressed(){
+        finishAffinity();
 
     }
 

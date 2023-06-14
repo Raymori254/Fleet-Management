@@ -81,7 +81,7 @@ public abstract class DrawerBaseActivity extends AppCompatActivity implements Na
 
 
             FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(DrawerBaseActivity.this, Login.class));
+            startActivity(new Intent(DrawerBaseActivity.this, SignInAs.class));
             finish();
 
         }

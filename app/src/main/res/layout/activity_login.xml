@@ -67,7 +67,7 @@
                     android:layout_marginTop="20dp"
                     android:fontFamily="sans-serif-black"
                     android:layout_gravity="center"
-                    android:text="@string/Welcome_message"
+                    android:text="Welcome To Flitracka Driver Login"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold">

@@ -28,6 +28,7 @@
         <entry key="..\:/Ray/app/src/main/res/drawable/ic_add.xml" value="0.1" />
         <entry key="..\:/Ray/app/src/main/res/drawable/image.xml" value="0.217" />
         <entry key="..\:/Ray/app/src/main/res/drawable/message.xml" value="0.211" />
+        <entry key="..\:/Ray/app/src/main/res/drawable/no_connection.xml" value="0.143" />
         <entry key="..\:/Ray/app/src/main/res/drawable/round_corner_delete.xml" value="0.2085" />
         <entry key="..\:/Ray/app/src/main/res/drawable/roundcorner.xml" value="0.2485" />
         <entry key="..\:/Ray/app/src/main/res/drawable/sms.xml" value="0.211" />
@@ -46,8 +47,11 @@
         <entry key="..\:/Ray/app/src/main/res/layout/activity_forgot_password.xml" value="0.24270833333333333" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_image_picker.xml" value="0.4363636212309535" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_image_picker2.xml" value="0.2994791666666667" />
-        <entry key="..\:/Ray/app/src/main/res/layout/activity_login.xml" value="0.4928684627575277" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_login.xml" value="0.45112781954887216" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_login_admin.xml" value="0.24479166666666666" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_main.xml" value="0.2879999900124293" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_no_connection.xml" value="0.18070652173913043" />
+        <entry key="..\:/Ray/app/src/main/res/layout/activity_sign_in_as.xml" value="0.25885416666666666" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_splash_screen.xml" value="0.22864583333333333" />
         <entry key="..\:/Ray/app/src/main/res/layout/activity_user_location.xml" value="0.2703804347826087" />
         <entry key="..\:/Ray/app/src/main/res/layout/admin_vehicles_layout.xml" value="0.2509057971014493" />

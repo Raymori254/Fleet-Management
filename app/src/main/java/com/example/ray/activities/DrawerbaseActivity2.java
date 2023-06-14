@@ -63,7 +63,7 @@ public class DrawerbaseActivity2 extends AppCompatActivity{
 
 
             FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(DrawerbaseActivity2.this, Login.class));
+            startActivity(new Intent(DrawerbaseActivity2.this, SignInAs .class));
             finish();
 
         }

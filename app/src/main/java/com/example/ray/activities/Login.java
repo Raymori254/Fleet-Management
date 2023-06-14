@@ -189,8 +189,10 @@ public class Login extends AppCompatActivity {
                                                             }
                                                             else if (userlevel.equals("admin")){
 
-                                                                startActivity(new Intent(Login.this, AdminMainActivity.class));
-                                                                finish();
+                                                                Toast.makeText(Login.this, "You Do Not Have The Credentials To Log In As Driver", Toast.LENGTH_SHORT).show();
+                                                                FirebaseAuth.getInstance().signOut();
+                                                                dialog.dismiss();
+
                                                             }
                                                         } else{
                                                             Toast.makeText(Login.this, "User data does not exist.", Toast.LENGTH_SHORT).show();
@@ -261,9 +263,5 @@ public class Login extends AppCompatActivity {
 
     }
 
-    //action for when the back button on device is pressed
-    public void onBackPressed(){
-            finishAffinity();
 
-    }
 }

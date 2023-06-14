@@ -17,6 +17,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -71,6 +72,9 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
     Location currentLocation;
     private static final int REQUEST_CODE = 101;
 
+    //Button
+    Button updateLocationButton;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,6 +92,7 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
         modelTV = view.findViewById(R.id.modelDescriptionIDFrag);
         plateTV = view.findViewById(R.id.plateNumberIDFrag);
         image = view.findViewById(R.id.ImageID);
+        updateLocationButton = view.findViewById(R.id.updateLocation);
 
         //DB
         db = FirebaseDatabase.getInstance();
@@ -289,6 +294,7 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
 
 
         //Add location to database
+
         db = FirebaseDatabase.getInstance();
         reference = db.getReference().child("Users")
                 .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
@@ -300,6 +306,29 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
         item.put("latitude", lat);
         item.put("longitude", longi);
         reference.updateChildren(item);
+
+        //use button to update
+        updateLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                db = FirebaseDatabase.getInstance();
+                reference = db.getReference().child("Users")
+                        .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                        .child("Current Location");
+                Double lat = currentLocation.getLatitude();
+                Double longi = currentLocation.getLongitude();
+
+                Map<String, Object> item = new HashMap<>();
+                item.put("latitude", lat);
+                item.put("longitude", longi);
+                reference.setValue(item);
+
+            }
+        });
+
 
 
 //        reference.setValue(latLng).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -326,4 +355,6 @@ public class Vehicles extends Fragment implements OnMapReadyCallback {
                 break;
         }
     }
+
+
 }
