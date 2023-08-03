@@ -1,41 +1,42 @@
 {
   "project_info": {
-    "project_number": "1014588885392",
-    "project_id": "ray-fleets",
-    "storage_bucket": "ray-fleets.appspot.com"
+    "project_number": "35934295885",
+    "firebase_url": "https://flitracka-default-rtdb.firebaseio.com",
+    "project_id": "flitracka",
+    "storage_bucket": "flitracka.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1014588885392:android:3beb66292030ed7f8c8b15",
+        "mobilesdk_app_id": "1:35934295885:android:b5b1a8f30be43c413c4904",
         "android_client_info": {
           "package_name": "com.example.ray"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1014588885392-gc2disfd9ppl2lc4uohks9881dckoc4h.apps.googleusercontent.com",
+          "client_id": "35934295885-aetufq1k0prk4stfpe542jhqvt7ossiu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.ray",
-            "certificate_hash": "1e0aa782b4fbc300afceaa9b5cbe1d7ac5ca4da6"
+            "certificate_hash": "6114ea7bb97ba1c9589f4a11a9248471a6095567"
           }
         },
         {
-          "client_id": "1014588885392-updbka1uhn2ifm1qah5h0uupncndhrmm.apps.googleusercontent.com",
+          "client_id": "35934295885-t1qtt3t6t5a5hhg74dr27ekebbta2cfh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCfZA_AJDvT7BU-zxv-5Z5vL5-fdEIteDk"
+          "current_key": "AIzaSyAXKMhfYAe_UNhUDIRHcgXnIqLn-6ZP9-Q"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1014588885392-updbka1uhn2ifm1qah5h0uupncndhrmm.apps.googleusercontent.com",
+              "client_id": "35934295885-t1qtt3t6t5a5hhg74dr27ekebbta2cfh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
